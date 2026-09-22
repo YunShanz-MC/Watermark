@@ -1,12 +1,12 @@
 #!/bin/bash
 # ==========================================
-# Atyro Cloud Premium MOTD Installer (v3 PRO)
+# Amerta Cloud Premium MOTD Installer (v3 PRO)
 # FULL CLEAN + ONLY CUSTOM MOTD
 # ==========================================
 
 set -e
 
-echo "🔧 Installing Atyro Cloud Premium MOTD..."
+echo "🔧 Installing Amerta Cloud Premium MOTD..."
 
 # ================================
 # REMOVE ALL OLD MOTD SYSTEM
@@ -40,15 +40,15 @@ sed -i '/pam_motd.so/d' /etc/pam.d/sshd
 sed -i '/pam_motd.so/d' /etc/pam.d/login
 
 # Add ONLY our MOTD
-echo "session optional pam_exec.so stdout /etc/update-motd.d/00-atyrocloud" >> /etc/pam.d/sshd
-echo "session optional pam_exec.so stdout /etc/update-motd.d/00-atyrocloud" >> /etc/pam.d/login
+echo "session optional pam_exec.so stdout /etc/update-motd.d/00-amertacloud" >> /etc/pam.d/sshd
+echo "session optional pam_exec.so stdout /etc/update-motd.d/00-amertacloud" >> /etc/pam.d/login
 
 # ================================
 # CREATE PREMIUM MOTD SCRIPT
 # ================================
-echo "✨ Creating Atyro Cloud MOTD..."
+echo "✨ Creating Amerta Cloud MOTD..."
 
-cat << 'EOF' > /etc/update-motd.d/00-atyrocloud
+cat << 'EOF' > /etc/update-motd.d/00-amertacloud
 #!/bin/bash
 
 # ===== Colors =====
@@ -82,17 +82,18 @@ echo ""
 # ===== LOGO =====
 echo -e "${MAGENTA}"
 cat << "LOGO"
- █████╗ ████████╗██╗   ██╗██████╗  ██████╗      ██████╗██╗      ██████╗ ██╗   ██╗██████╗ 
-██╔══██╗╚══██╔══╝╚██╗ ██╔╝██╔══██╗██╔═══██╗    ██╔════╝██║     ██╔═══██╗██║   ██║██╔══██╗
-███████║   ██║    ╚████╔╝ ██████╔╝██║   ██║    ██║     ██║     ██║   ██║██║   ██║██║  ██║
-██╔══██║   ██║     ╚██╔╝  ██╔══██╗██║   ██║    ██║     ██║     ██║   ██║██║   ██║██║  ██║
-██║  ██║   ██║      ██║   ██║  ██║╚██████╔╝    ╚██████╗███████╗╚██████╔╝╚██████╔╝██████╔╝
-╚═╝  ╚═╝   ╚═╝      ╚═╝   ╚═╝  ╚═╝ ╚═════╝      ╚═════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═════╝
+ █████╗ ███╗   ███╗███████╗██████╗ ████████╗ █████╗      ██████╗██╗      ██████╗ ██╗   ██╗██████╗ 
+██╔══██╗████╗ ████║██╔════╝██╔══██╗╚══██╔══╝██╔══██╗    ██╔════╝██║     ██╔═══██╗██║   ██║██╔══██╗
+███████║██╔████╔██║█████╗  ██████╔╝   ██║   ███████║    ██║     ██║     ██║   ██║██║   ██║██║  ██║
+██╔══██║██║╚██╔╝██║██╔══╝  ██╔══██╗   ██║   ██╔══██║    ██║     ██║     ██║   ██║██║   ██║██║  ██║
+██║  ██║██║ ╚═╝ ██║███████╗██║  ██║   ██║   ██║  ██║    ╚██████╗███████╗╚██████╔╝╚██████╔╝██████╔╝
+╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝     ╚═════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═════╝
 LOGO
 echo -e "${RESET}"
 
+
 # ===== HEADER =====
-echo -e "${GREEN}🚀 Welcome to Atyro Cloud Datacenter${RESET}"
+echo -e "${GREEN}🚀 Welcome to Amerta Cloud Data center${RESET}"
 echo -e "${BLUE}High Performance • Secure • Reliable Infrastructure${RESET}"
 echo -e "${GRAY}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
 
@@ -111,14 +112,13 @@ printf "${CYAN}%-18s${RESET} %s\n" "IP:" "$IP"
 echo -e "${GRAY}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
 
 # ===== FOOTER =====
-echo -e "${GREEN}Support:${RESET}  support@atyro.cloud"
-echo -e "${GREEN}Discord:${RESET}  https://discord.gg/RTcr3gmQFr"
-echo -e "${GREEN}Website:${RESET}  https://atyro.cloud"
-echo -e "${MAGENTA}Atyro Cloud — Premium Hosting Experience 💎${RESET}"
+echo -e "${GREEN}Discord:${RESET}  https://discord.gg/YqM6JdVaTG"
+echo -e "${GREEN}Donate :${RESET}  https://saweria.co/VectorStudio"
+echo -e "${MAGENTA}Amerta Cloud — Premium Hosting Experience 💎${RESET}"
 echo ""
 EOF
 
-chmod +x /etc/update-motd.d/00-atyrocloud
+chmod +x /etc/update-motd.d/00-amertacloud
 
 # ================================
 # RESTART SERVICES
@@ -126,7 +126,7 @@ chmod +x /etc/update-motd.d/00-atyrocloud
 systemctl restart ssh 2>/dev/null || true
 
 echo ""
-echo "✅ Atyro Cloud MOTD Installed (ONLY MODE ENABLED)"
+echo "✅ Amerta Cloud MOTD Installed (ONLY MODE ENABLED)"
 echo "🚫 All default MOTD fully removed"
 echo "🔥 Only your custom MOTD will show"
 echo "➡ Reconnect SSH to see changes"
